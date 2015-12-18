@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+    <package name="myPackage" extends="struts-default">
+        <default-action-ref name="index" />
+        <action name="index1" class="test.maven.archetype.action.IndexAction">
+            <!--<result name="input">/login.jsp</result>-->
+            <result>/WEB-INF/jsp/index.jsp</result>
+        </action>
+        <!--
+        注意：jsonp这个action的返回不能配置为json类型的返回，而要配置成jsp页面返回
+        因为如果用json类型的返回，返回给ajax的text会在左右两边加上“，导致ajax解析失败
+       返回jsp，在jsp里显示result则不会有”
+        -->
+        <action name="jsonp" class="test.maven.archetype.action.JsonpTestAction">
+            <result>/testJsonpReturn.jsp</result>
+        </action>
+    </package>
+
+    <package name="sitemeshPackage" extends="struts-default" namespace="/sitemesh">
+        <action name="helloWorld" class="test.maven.archetype.action.HelloWorldAction" >
+            <result name="input">/WEB-INF/jsp/helloWorldInput.jsp</result>
+            <result>/WEB-INF/jsp/helloWorld.jsp</result>
+        </action>
+    </package>
+
+    <package name="jsonPackage" extends="json-default">
+        <action name="json1" class="test.maven.archetype.action.JsonTestAction">
+            <result type="json">
+                <!-- 此处将reslut的值返回给客户端，root的值对应要返回的值的属性result
+                      注意：root为固定写法，否则不会把result的值返回给客户端 -->
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="jsonLogin" class="test.maven.archetype.action.JsonLoginAction">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+</struts>
