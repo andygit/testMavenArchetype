@@ -15,6 +15,7 @@
  */
 package test.maven.archetype;
 
+import com.opensymphony.xwork2.ActionSupport;
 import junit.framework.TestCase;
 
 import com.opensymphony.xwork2.Action;
@@ -26,6 +27,8 @@ import test.maven.archetype.action.HelloWorldAction;
 public class HelloWorldActionTest extends TestCase {
     
     public void testHelloWorldAction() throws Exception {
+        //不能把父类实例强制转换为子类
+//        HelloWorldAction a = (HelloWorldAction)new ActionSupport();
         HelloWorldAction action = new HelloWorldAction();
         String result = action.execute();
         assertEquals(Action.SUCCESS, result);
