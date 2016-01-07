@@ -111,6 +111,23 @@
             <!-- 不加这个jdk的描述的话找不到jar -->
             <classifier>jdk15</classifier>
         </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>aspectj</groupId>-->
+            <!--<artifactId>aspectjrt</artifactId>-->
+            <!--<version>1.5.3</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.6</version>
+        </dependency>
     </dependencies>
 	
     <build>
